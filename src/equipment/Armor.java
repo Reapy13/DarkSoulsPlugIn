@@ -6,37 +6,37 @@ public abstract class Armor implements IEquipment {
 
 	// Fields
 	
-	private String name;
+	protected String name;
 	
-	private StatBonus physicalDefBonus;
+	protected StatBonus physicalDefBonus;
 	
-	private int physicalDef;
+	protected int physicalDef;
 	
-	private int strikeDef;
+	protected int strikeDef;
 	
-	private int slashDef;
+	protected int slashDef;
 	
-	private int trustDef;
+	protected int trustDef;
 	
-	private int magicDef;
+	protected int magicDef;
 	
-	private int fireDef;
+	protected int fireDef;
 	
-	private int lightningDef;
+	protected int lightningDef;
 	
-	private int darkDef;
+	protected int darkDef;
 	
-	private int poiseRes;
+	protected int poiseRes;
 	
-	private int bleedRes;
+	protected int bleedRes;
 	
-	private int petrifyRes;
+	protected int petrifyRes;
 	
-	private int curseRes;
+	protected int curseRes;
 	
-	private double weight;
+	protected double weight;
 	
-	private int durability;
+	protected int durability;
 	
 	// Getters and Setters
 	
