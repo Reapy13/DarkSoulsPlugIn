@@ -30,7 +30,7 @@ public class ArmorService {
 		emptyList(legs);
 	}
 
-	private Armor bestElementList(List<? extends Armor> armors, ElementEnum enumeration)
+	private Armor bestElementInListByElement(List<? extends Armor> armors, ElementEnum enumeration)
 			throws ElementNotSupportedException {
 		Armor armorReturned = null;
 		for (Armor armor : armors) {
@@ -86,15 +86,15 @@ public class ArmorService {
 		return armorReturned;
 	}
 
-	public ArmorSet bestDefSet(List<Helm> helms, List<Chest> chests, List<Gauntlet> gauntlets, List<Leg> legs,
+	public ArmorSet bestDefSetByElement(List<Helm> helms, List<Chest> chests, List<Gauntlet> gauntlets, List<Leg> legs,
 			ElementEnum element) throws EmptyListException, ElementNotSupportedException {
 		// Testing of the lists
 		emptyLists(helms, chests, gauntlets, legs);
 
 		// Creation of the armor set
-		ArmorSet armorSet = new ArmorSet((Helm) bestElementList(helms, element),
-				(Chest) bestElementList(chests, element), (Gauntlet) bestElementList(gauntlets, element),
-				(Leg) bestElementList(legs, element));
+		ArmorSet armorSet = new ArmorSet((Helm) bestElementInListByElement(helms, element),
+				(Chest) bestElementInListByElement(chests, element), (Gauntlet) bestElementInListByElement(gauntlets, element),
+				(Leg) bestElementInListByElement(legs, element));
 
 		return armorSet;
 	}
