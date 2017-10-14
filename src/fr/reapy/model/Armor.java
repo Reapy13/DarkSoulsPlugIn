@@ -1,6 +1,6 @@
-package equipment;
+package fr.reapy.model;
 
-import enumeration.StatBonus;
+import fr.reapy.enumeration.StatBonusEnum;
 
 public abstract class Armor implements IEquipment {
 
@@ -8,7 +8,7 @@ public abstract class Armor implements IEquipment {
 	
 	protected String name;
 	
-	protected StatBonus physicalDefBonus;
+	protected StatBonusEnum physicalDefBonus;
 	
 	protected int physicalDef;
 	
@@ -48,11 +48,11 @@ public abstract class Armor implements IEquipment {
 		this.name = name;
 	}
 	
-	public StatBonus getPhysicalDefBonus() {
+	public StatBonusEnum getPhysicalDefBonus() {
 		return physicalDefBonus;
 	}
 	
-	public void setPhysicalDefBonus(StatBonus physicalDefBonus) {
+	public void setPhysicalDefBonus(StatBonusEnum physicalDefBonus) {
 		this.physicalDefBonus = physicalDefBonus;
 	}
 	

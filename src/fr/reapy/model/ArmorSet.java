@@ -1,4 +1,4 @@
-package equipment;
+package fr.reapy.model;
 
 public class ArmorSet {
 
@@ -15,7 +15,10 @@ public class ArmorSet {
 	// Constructors
 	
 	public ArmorSet() {
-		
+		this.helm = null;
+		this.chest = null;
+		this.gauntlet = null;
+		this.leg = null;
 	}
 	
 	public ArmorSet(Helm helm, Chest chest, Gauntlet gauntlet, Leg leg) {

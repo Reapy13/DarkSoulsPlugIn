@@ -8,25 +8,26 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import equipment.ArmorSet;
-import equipment.Chest;
-import equipment.Gauntlet;
-import equipment.Helm;
-import equipment.Leg;
-import exception.EmptyListException;
-import service.ArmorService;
+import fr.reapy.enumeration.ElementEnum;
+import fr.reapy.exception.ElementNotSupportedException;
+import fr.reapy.exception.EmptyListException;
+import fr.reapy.model.ArmorSet;
+import fr.reapy.model.Chest;
+import fr.reapy.model.Gauntlet;
+import fr.reapy.model.Helm;
+import fr.reapy.model.Leg;
+import fr.reapy.service.ArmorService;
 
 public class ArmorServiceTest {
-	
+
 	/**
-	 * Développer plus largement les tests
-	 * Fractionner le code
+	 * Développer plus largement les tests Fractionner le code
 	 */
-	
+
 	// Fields
-	
+
 	private ArmorService armorService = new ArmorService();
-	
+
 	private Helm helm1, helm2, helm3;
 	private Chest chest1, chest2, chest3;
 	private Gauntlet gauntlet1, gauntlet2, gauntlet3;
@@ -36,7 +37,7 @@ public class ArmorServiceTest {
 	private List<Chest> chests = new ArrayList<>();
 	private List<Gauntlet> gauntlets = new ArrayList<>();
 	private List<Leg> legs = new ArrayList<>();
-	
+
 	@Before
 	public void init() {
 		helm1 = new Helm();
@@ -51,10 +52,7 @@ public class ArmorServiceTest {
 		chest3 = new Chest();
 		gauntlet3 = new Gauntlet();
 		leg3 = new Leg();
-	}
 
-	@Test
-	public void bestPhysicalDefSetTest() throws EmptyListException {
 		helm1.setPhysicalDef(2);
 		chest1.setPhysicalDef(3);
 		gauntlet1.setPhysicalDef(5);
@@ -68,66 +66,45 @@ public class ArmorServiceTest {
 		gauntlet3.setPhysicalDef(6);
 		leg3.setPhysicalDef(8);
 
-		helms.add(helm1);
-		helms.add(helm2);
-		helms.add(helm3);
-		chests.add(chest1);
-		chests.add(chest2);
-		chests.add(chest3);
-		gauntlets.add(gauntlet1);
-		gauntlets.add(gauntlet2);
-		gauntlets.add(gauntlet3);
-		legs.add(leg1);
-		legs.add(leg2);
-		legs.add(leg3);
-		
-		ArmorSet armorSetTest = new ArmorSet(helm3, chest2, gauntlet3, leg3);
-		
-		ArmorSet armorSet = armorService.bestPhysicalDefSet(helms, chests, gauntlets, legs);
-		assertSame(armorSet.getHelm(), armorSetTest.getHelm());
-		assertSame(armorSet.getChest(), armorSetTest.getChest());
-		assertSame(armorSet.getGauntlet(), armorSetTest.getGauntlet());
-		assertSame(armorSet.getLeg(), armorSetTest.getLeg());
+		helm1.setStrikeDef(2);
+		chest1.setStrikeDef(3);
+		gauntlet1.setStrikeDef(5);
+		leg1.setStrikeDef(7);
+		helm2.setStrikeDef(1);
+		chest2.setStrikeDef(14);
+		gauntlet2.setStrikeDef(4);
+		leg2.setStrikeDef(6);
+		helm3.setStrikeDef(3);
+		chest3.setStrikeDef(7);
+		gauntlet3.setStrikeDef(6);
+		leg3.setStrikeDef(8);
 
-		legs.clear();
-		
-		try {
-			armorSet = armorService.bestPhysicalDefSet(helms, chests, gauntlets, legs);
-			assert(false);
-		} catch (EmptyListException e) {
-			assert(true);
-		}
+		helm1.setSlashDef(2);
+		chest1.setSlashDef(3);
+		gauntlet1.setSlashDef(5);
+		leg1.setSlashDef(7);
+		helm2.setSlashDef(1);
+		chest2.setSlashDef(14);
+		gauntlet2.setSlashDef(4);
+		leg2.setSlashDef(6);
+		helm3.setSlashDef(3);
+		chest3.setSlashDef(7);
+		gauntlet3.setSlashDef(6);
+		leg3.setSlashDef(8);
 
-		gauntlets.clear();
-		
-		try {
-			armorSet = armorService.bestPhysicalDefSet(helms, chests, gauntlets, legs);
-			assert(false);
-		} catch (EmptyListException e) {
-			assert(true);
-		}
+		helm1.setTrustDef(2);
+		chest1.setTrustDef(3);
+		gauntlet1.setTrustDef(5);
+		leg1.setTrustDef(7);
+		helm2.setTrustDef(1);
+		chest2.setTrustDef(14);
+		gauntlet2.setTrustDef(4);
+		leg2.setTrustDef(6);
+		helm3.setTrustDef(3);
+		chest3.setTrustDef(7);
+		gauntlet3.setTrustDef(6);
+		leg3.setTrustDef(8);
 
-		chests.clear();
-		
-		try {
-			armorSet = armorService.bestPhysicalDefSet(helms, chests, gauntlets, legs);
-			assert(false);
-		} catch (EmptyListException e) {
-			assert(true);
-		}
-
-		helms.clear();
-		
-		try {
-			armorSet = armorService.bestPhysicalDefSet(helms, chests, gauntlets, legs);
-			assert(false);
-		} catch (EmptyListException e) {
-			assert(true);
-		}
-	}
-
-	@Test
-	public void bestMagicDefSetTest() throws EmptyListException {
 		helm1.setMagicDef(2);
 		chest1.setMagicDef(3);
 		gauntlet1.setMagicDef(5);
@@ -141,66 +118,6 @@ public class ArmorServiceTest {
 		gauntlet3.setMagicDef(6);
 		leg3.setMagicDef(8);
 
-		helms.add(helm1);
-		helms.add(helm2);
-		helms.add(helm3);
-		chests.add(chest1);
-		chests.add(chest2);
-		chests.add(chest3);
-		gauntlets.add(gauntlet1);
-		gauntlets.add(gauntlet2);
-		gauntlets.add(gauntlet3);
-		legs.add(leg1);
-		legs.add(leg2);
-		legs.add(leg3);
-		
-		ArmorSet armorSetTest = new ArmorSet(helm3, chest2, gauntlet3, leg3);
-		
-		ArmorSet armorSet = armorService.bestMagicDefSet(helms, chests, gauntlets, legs);
-		assertSame(armorSet.getHelm(), armorSetTest.getHelm());
-		assertSame(armorSet.getChest(), armorSetTest.getChest());
-		assertSame(armorSet.getGauntlet(), armorSetTest.getGauntlet());
-		assertSame(armorSet.getLeg(), armorSetTest.getLeg());
-		
-		legs.clear();
-		
-		try {
-			armorSet = armorService.bestMagicDefSet(helms, chests, gauntlets, legs);
-			assert(false);
-		} catch (EmptyListException e) {
-			assert(true);
-		}
-		
-		gauntlets.clear();
-		
-		try {
-			armorSet = armorService.bestMagicDefSet(helms, chests, gauntlets, legs);
-			assert(false);
-		} catch (EmptyListException e) {
-			assert(true);
-		}
-		
-		chests.clear();
-		
-		try {
-			armorSet = armorService.bestMagicDefSet(helms, chests, gauntlets, legs);
-			assert(false);
-		} catch (EmptyListException e) {
-			assert(true);
-		}
-		
-		helms.clear();
-		
-		try {
-			armorSet = armorService.bestMagicDefSet(helms, chests, gauntlets, legs);
-			assert(false);
-		} catch (EmptyListException e) {
-			assert(true);
-		}
-	}
-
-	@Test
-	public void bestFireDefSetTest() throws EmptyListException {
 		helm1.setFireDef(2);
 		chest1.setFireDef(3);
 		gauntlet1.setFireDef(5);
@@ -214,66 +131,6 @@ public class ArmorServiceTest {
 		gauntlet3.setFireDef(6);
 		leg3.setFireDef(8);
 
-		helms.add(helm1);
-		helms.add(helm2);
-		helms.add(helm3);
-		chests.add(chest1);
-		chests.add(chest2);
-		chests.add(chest3);
-		gauntlets.add(gauntlet1);
-		gauntlets.add(gauntlet2);
-		gauntlets.add(gauntlet3);
-		legs.add(leg1);
-		legs.add(leg2);
-		legs.add(leg3);
-		
-		ArmorSet armorSetTest = new ArmorSet(helm3, chest2, gauntlet3, leg3);
-		
-		ArmorSet armorSet = armorService.bestFireDefSet(helms, chests, gauntlets, legs);
-		assertSame(armorSet.getHelm(), armorSetTest.getHelm());
-		assertSame(armorSet.getChest(), armorSetTest.getChest());
-		assertSame(armorSet.getGauntlet(), armorSetTest.getGauntlet());
-		assertSame(armorSet.getLeg(), armorSetTest.getLeg());
-		
-		legs.clear();
-		
-		try {
-			armorSet = armorService.bestFireDefSet(helms, chests, gauntlets, legs);
-			assert(false);
-		} catch (EmptyListException e) {
-			assert(true);
-		}
-		
-		gauntlets.clear();
-		
-		try {
-			armorSet = armorService.bestFireDefSet(helms, chests, gauntlets, legs);
-			assert(false);
-		} catch (EmptyListException e) {
-			assert(true);
-		}
-		
-		chests.clear();
-		
-		try {
-			armorSet = armorService.bestFireDefSet(helms, chests, gauntlets, legs);
-			assert(false);
-		} catch (EmptyListException e) {
-			assert(true);
-		}
-		
-		helms.clear();
-		
-		try {
-			armorSet = armorService.bestFireDefSet(helms, chests, gauntlets, legs);
-			assert(false);
-		} catch (EmptyListException e) {
-			assert(true);
-		}
-	}
-
-	@Test
-	public void bestLightningDefSetTest() throws EmptyListException {
 		helm1.setLightningDef(2);
 		chest1.setLightningDef(3);
 		gauntlet1.setLightningDef(5);
@@ -287,66 +144,6 @@ public class ArmorServiceTest {
 		gauntlet3.setLightningDef(6);
 		leg3.setLightningDef(8);
 
-		helms.add(helm1);
-		helms.add(helm2);
-		helms.add(helm3);
-		chests.add(chest1);
-		chests.add(chest2);
-		chests.add(chest3);
-		gauntlets.add(gauntlet1);
-		gauntlets.add(gauntlet2);
-		gauntlets.add(gauntlet3);
-		legs.add(leg1);
-		legs.add(leg2);
-		legs.add(leg3);
-		
-		ArmorSet armorSetTest = new ArmorSet(helm3, chest2, gauntlet3, leg3);
-		
-		ArmorSet armorSet = armorService.bestLightningDefSet(helms, chests, gauntlets, legs);
-		assertSame(armorSet.getHelm(), armorSetTest.getHelm());
-		assertSame(armorSet.getChest(), armorSetTest.getChest());
-		assertSame(armorSet.getGauntlet(), armorSetTest.getGauntlet());
-		assertSame(armorSet.getLeg(), armorSetTest.getLeg());
-		
-		legs.clear();
-		
-		try {
-			armorSet = armorService.bestLightningDefSet(helms, chests, gauntlets, legs);
-			assert(false);
-		} catch (EmptyListException e) {
-			assert(true);
-		}
-		
-		gauntlets.clear();
-		
-		try {
-			armorSet = armorService.bestLightningDefSet(helms, chests, gauntlets, legs);
-			assert(false);
-		} catch (EmptyListException e) {
-			assert(true);
-		}
-		
-		chests.clear();
-		
-		try {
-			armorSet = armorService.bestLightningDefSet(helms, chests, gauntlets, legs);
-			assert(false);
-		} catch (EmptyListException e) {
-			assert(true);
-		}
-		
-		helms.clear();
-		
-		try {
-			armorSet = armorService.bestLightningDefSet(helms, chests, gauntlets, legs);
-			assert(false);
-		} catch (EmptyListException e) {
-			assert(true);
-		}
-	}
-
-	@Test
-	public void bestDarkDefSetTest() throws EmptyListException {
 		helm1.setDarkDef(2);
 		chest1.setDarkDef(3);
 		gauntlet1.setDarkDef(5);
@@ -372,48 +169,459 @@ public class ArmorServiceTest {
 		legs.add(leg1);
 		legs.add(leg2);
 		legs.add(leg3);
-		
+	}
+
+	@Test
+	public void bestDefSetTest() throws EmptyListException, ElementNotSupportedException {
 		ArmorSet armorSetTest = new ArmorSet(helm3, chest2, gauntlet3, leg3);
-		
-		ArmorSet armorSet = armorService.bestDarkDefSet(helms, chests, gauntlets, legs);
+
+		ArmorSet armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.PHYSICAL);
 		assertSame(armorSet.getHelm(), armorSetTest.getHelm());
 		assertSame(armorSet.getChest(), armorSetTest.getChest());
 		assertSame(armorSet.getGauntlet(), armorSetTest.getGauntlet());
 		assertSame(armorSet.getLeg(), armorSetTest.getLeg());
-		
+
 		legs.clear();
-		
+
 		try {
-			armorSet = armorService.bestDarkDefSet(helms, chests, gauntlets, legs);
-			assert(false);
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.PHYSICAL);
+			assert (false);
 		} catch (EmptyListException e) {
-			assert(true);
+			assert (true);
 		}
-		
+
+		legs.add(leg1);
+		legs.add(leg2);
+		legs.add(leg3);
 		gauntlets.clear();
-		
+
 		try {
-			armorSet = armorService.bestDarkDefSet(helms, chests, gauntlets, legs);
-			assert(false);
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.PHYSICAL);
+			assert (false);
 		} catch (EmptyListException e) {
-			assert(true);
+			assert (true);
 		}
-		
+
+		gauntlets.add(gauntlet1);
+		gauntlets.add(gauntlet2);
+		gauntlets.add(gauntlet3);
 		chests.clear();
-		
+
 		try {
-			armorSet = armorService.bestDarkDefSet(helms, chests, gauntlets, legs);
-			assert(false);
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.PHYSICAL);
+			assert (false);
 		} catch (EmptyListException e) {
-			assert(true);
+			assert (true);
 		}
-		
+
+		chests.add(chest1);
+		chests.add(chest2);
+		chests.add(chest3);
 		helms.clear();
-		
+
 		try {
-			armorSet = armorService.bestDarkDefSet(helms, chests, gauntlets, legs);
-			assert(false);
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.PHYSICAL);
+			assert (false);
 		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		helms.add(helm1);
+		helms.add(helm2);
+		helms.add(helm3);
+
+		armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.STRIKE);
+		assertSame(armorSet.getHelm(), armorSetTest.getHelm());
+		assertSame(armorSet.getChest(), armorSetTest.getChest());
+		assertSame(armorSet.getGauntlet(), armorSetTest.getGauntlet());
+		assertSame(armorSet.getLeg(), armorSetTest.getLeg());
+
+		legs.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.STRIKE);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		legs.add(leg1);
+		legs.add(leg2);
+		legs.add(leg3);
+		gauntlets.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.STRIKE);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		gauntlets.add(gauntlet1);
+		gauntlets.add(gauntlet2);
+		gauntlets.add(gauntlet3);
+		chests.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.STRIKE);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		chests.add(chest1);
+		chests.add(chest2);
+		chests.add(chest3);
+		helms.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.STRIKE);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		helms.add(helm1);
+		helms.add(helm2);
+		helms.add(helm3);
+
+		armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.SLASH);
+		assertSame(armorSet.getHelm(), armorSetTest.getHelm());
+		assertSame(armorSet.getChest(), armorSetTest.getChest());
+		assertSame(armorSet.getGauntlet(), armorSetTest.getGauntlet());
+		assertSame(armorSet.getLeg(), armorSetTest.getLeg());
+
+		legs.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.SLASH);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		legs.add(leg1);
+		legs.add(leg2);
+		legs.add(leg3);
+		gauntlets.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.SLASH);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		gauntlets.add(gauntlet1);
+		gauntlets.add(gauntlet2);
+		gauntlets.add(gauntlet3);
+		chests.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.SLASH);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		chests.add(chest1);
+		chests.add(chest2);
+		chests.add(chest3);
+		helms.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.SLASH);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		helms.add(helm1);
+		helms.add(helm2);
+		helms.add(helm3);
+
+		armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.TRUST);
+		assertSame(armorSet.getHelm(), armorSetTest.getHelm());
+		assertSame(armorSet.getChest(), armorSetTest.getChest());
+		assertSame(armorSet.getGauntlet(), armorSetTest.getGauntlet());
+		assertSame(armorSet.getLeg(), armorSetTest.getLeg());
+
+		legs.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.TRUST);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		legs.add(leg1);
+		legs.add(leg2);
+		legs.add(leg3);
+		gauntlets.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.TRUST);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		gauntlets.add(gauntlet1);
+		gauntlets.add(gauntlet2);
+		gauntlets.add(gauntlet3);
+		chests.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.TRUST);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		chests.add(chest1);
+		chests.add(chest2);
+		chests.add(chest3);
+		helms.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.TRUST);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		helms.add(helm1);
+		helms.add(helm2);
+		helms.add(helm3);
+
+		armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.MAGIC);
+		assertSame(armorSet.getHelm(), armorSetTest.getHelm());
+		assertSame(armorSet.getChest(), armorSetTest.getChest());
+		assertSame(armorSet.getGauntlet(), armorSetTest.getGauntlet());
+		assertSame(armorSet.getLeg(), armorSetTest.getLeg());
+
+		legs.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.MAGIC);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		legs.add(leg1);
+		legs.add(leg2);
+		legs.add(leg3);
+		gauntlets.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.MAGIC);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		gauntlets.add(gauntlet1);
+		gauntlets.add(gauntlet2);
+		gauntlets.add(gauntlet3);
+		chests.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.MAGIC);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		chests.add(chest1);
+		chests.add(chest2);
+		chests.add(chest3);
+		helms.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.MAGIC);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		helms.add(helm1);
+		helms.add(helm2);
+		helms.add(helm3);
+
+		armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.FIRE);
+		assertSame(armorSet.getHelm(), armorSetTest.getHelm());
+		assertSame(armorSet.getChest(), armorSetTest.getChest());
+		assertSame(armorSet.getGauntlet(), armorSetTest.getGauntlet());
+		assertSame(armorSet.getLeg(), armorSetTest.getLeg());
+
+		legs.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.FIRE);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		legs.add(leg1);
+		legs.add(leg2);
+		legs.add(leg3);
+		gauntlets.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.FIRE);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		gauntlets.add(gauntlet1);
+		gauntlets.add(gauntlet2);
+		gauntlets.add(gauntlet3);
+		chests.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.FIRE);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		chests.add(chest1);
+		chests.add(chest2);
+		chests.add(chest3);
+		helms.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.FIRE);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		helms.add(helm1);
+		helms.add(helm2);
+		helms.add(helm3);
+
+		armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.LIGHTNING);
+		assertSame(armorSet.getHelm(), armorSetTest.getHelm());
+		assertSame(armorSet.getChest(), armorSetTest.getChest());
+		assertSame(armorSet.getGauntlet(), armorSetTest.getGauntlet());
+		assertSame(armorSet.getLeg(), armorSetTest.getLeg());
+
+		legs.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.LIGHTNING);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		legs.add(leg1);
+		legs.add(leg2);
+		legs.add(leg3);
+		gauntlets.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.LIGHTNING);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		gauntlets.add(gauntlet1);
+		gauntlets.add(gauntlet2);
+		gauntlets.add(gauntlet3);
+		chests.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.LIGHTNING);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		chests.add(chest1);
+		chests.add(chest2);
+		chests.add(chest3);
+		helms.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.LIGHTNING);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		helms.add(helm1);
+		helms.add(helm2);
+		helms.add(helm3);
+
+		armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.DARK);
+		assertSame(armorSet.getHelm(), armorSetTest.getHelm());
+		assertSame(armorSet.getChest(), armorSetTest.getChest());
+		assertSame(armorSet.getGauntlet(), armorSetTest.getGauntlet());
+		assertSame(armorSet.getLeg(), armorSetTest.getLeg());
+
+		legs.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.DARK);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		legs.add(leg1);
+		legs.add(leg2);
+		legs.add(leg3);
+		gauntlets.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.DARK);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		gauntlets.add(gauntlet1);
+		gauntlets.add(gauntlet2);
+		gauntlets.add(gauntlet3);
+		chests.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.DARK);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		chests.add(chest1);
+		chests.add(chest2);
+		chests.add(chest3);
+		helms.clear();
+
+		try {
+			armorSet = armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.DARK);
+			assert (false);
+		} catch (EmptyListException e) {
+			assert (true);
+		}
+
+		helms.add(helm1);
+		helms.add(helm2);
+		helms.add(helm3);
+	}
+	
+	@Test
+	public void elementNotSupportedTest() throws EmptyListException {
+		try {
+			armorService.bestDefSet(helms, chests, gauntlets, legs, ElementEnum.DEFAULT);
+			assert(false);
+		} catch (ElementNotSupportedException e) {
 			assert(true);
 		}
 	}

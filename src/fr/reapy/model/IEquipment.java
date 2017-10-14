@@ -1,4 +1,4 @@
-package equipment;
+package fr.reapy.model;
 
 public interface IEquipment {
 

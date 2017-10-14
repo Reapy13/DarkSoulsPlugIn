@@ -1,4 +1,4 @@
-package fr.reapy.equipmentTest;
+package fr.reapy.modelTest;
 
 public class EquipmentTest {
 

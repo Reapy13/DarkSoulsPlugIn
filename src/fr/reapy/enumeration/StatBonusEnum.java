@@ -1,6 +1,6 @@
-package enumeration;
+package fr.reapy.enumeration;
 
-public enum StatBonus {
+public enum StatBonusEnum {
 	
 	A('A'),
 	B('B'),
@@ -14,7 +14,7 @@ public enum StatBonus {
 	
 	// Constructor
 	
-	private StatBonus(char level) {
+	private StatBonusEnum(char level) {
 		this.level = level;
 	}
 	
