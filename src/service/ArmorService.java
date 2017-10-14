@@ -1,9 +1,8 @@
 package service;
 
 import java.util.List;
-import java.util.List;
 
-import equipment.ArmorList;
+import equipment.ArmorSet;
 import equipment.Chest;
 import equipment.Gauntlet;
 import equipment.Helm;
@@ -14,8 +13,8 @@ public class ArmorService {
 
 	// Methods
 	
-	public ArmorList bestPhysicalDefList(List<Helm> helms, List<Chest> chests, List<Gauntlet> gauntlets, List<Leg> legs) throws EmptyListException {
-		ArmorList armorList = new ArmorList();
+	public ArmorSet bestPhysicalDefSet(List<Helm> helms, List<Chest> chests, List<Gauntlet> gauntlets, List<Leg> legs) throws EmptyListException {
+		ArmorSet armorSet = new ArmorSet();
 		
 		Helm helmTmp = null;
 		for (Helm helm : helms) {
@@ -73,16 +72,16 @@ public class ArmorService {
 			throw new EmptyListException();
 		}
 		
-		armorList.ListHelm(helmTmp);
-		armorList.ListChest(chestTmp);
-		armorList.ListGauntlet(gauntletTmp);
-		armorList.ListLeg(legTmp);
+		armorSet.setHelm(helmTmp);
+		armorSet.setChest(chestTmp);
+		armorSet.setGauntlet(gauntletTmp);
+		armorSet.setLeg(legTmp);
 		
-		return armorList;
+		return armorSet;
 	}
 	
-	public ArmorList bestMagicDefList(List<Helm> helms, List<Chest> chests, List<Gauntlet> gauntlets, List<Leg> legs) throws EmptyListException {
-		ArmorList armorList = new ArmorList();
+	public ArmorSet bestMagicDefSet(List<Helm> helms, List<Chest> chests, List<Gauntlet> gauntlets, List<Leg> legs) throws EmptyListException {
+		ArmorSet armorSet = new ArmorSet();
 		
 		Helm helmTmp = null;
 		for (Helm helm : helms) {
@@ -140,16 +139,16 @@ public class ArmorService {
 			throw new EmptyListException();
 		}
 		
-		armorList.ListHelm(helmTmp);
-		armorList.ListChest(chestTmp);
-		armorList.ListGauntlet(gauntletTmp);
-		armorList.ListLeg(legTmp);
+		armorSet.setHelm(helmTmp);
+		armorSet.setChest(chestTmp);
+		armorSet.setGauntlet(gauntletTmp);
+		armorSet.setLeg(legTmp);
 		
-		return armorList;
+		return armorSet;
 	}
 	
-	public ArmorList bestFireDefList(List<Helm> helms, List<Chest> chests, List<Gauntlet> gauntlets, List<Leg> legs) throws EmptyListException {
-		ArmorList armorList = new ArmorList();
+	public ArmorSet bestFireDefSet(List<Helm> helms, List<Chest> chests, List<Gauntlet> gauntlets, List<Leg> legs) throws EmptyListException {
+		ArmorSet armorSet = new ArmorSet();
 		
 		Helm helmTmp = null;
 		for (Helm helm : helms) {
@@ -207,16 +206,16 @@ public class ArmorService {
 			throw new EmptyListException();
 		}
 		
-		armorList.ListHelm(helmTmp);
-		armorList.ListChest(chestTmp);
-		armorList.ListGauntlet(gauntletTmp);
-		armorList.ListLeg(legTmp);
+		armorSet.setHelm(helmTmp);
+		armorSet.setChest(chestTmp);
+		armorSet.setGauntlet(gauntletTmp);
+		armorSet.setLeg(legTmp);
 		
-		return armorList;
+		return armorSet;
 	}
 	
-	public ArmorList bestLightningDefList(List<Helm> helms, List<Chest> chests, List<Gauntlet> gauntlets, List<Leg> legs) throws EmptyListException {
-		ArmorList armorList = new ArmorList();
+	public ArmorSet bestLightningDefSet(List<Helm> helms, List<Chest> chests, List<Gauntlet> gauntlets, List<Leg> legs) throws EmptyListException {
+		ArmorSet armorSet = new ArmorSet();
 		
 		Helm helmTmp = null;
 		for (Helm helm : helms) {
@@ -274,16 +273,16 @@ public class ArmorService {
 			throw new EmptyListException();
 		}
 		
-		armorList.ListHelm(helmTmp);
-		armorList.ListChest(chestTmp);
-		armorList.ListGauntlet(gauntletTmp);
-		armorList.ListLeg(legTmp);
+		armorSet.setHelm(helmTmp);
+		armorSet.setChest(chestTmp);
+		armorSet.setGauntlet(gauntletTmp);
+		armorSet.setLeg(legTmp);
 		
-		return armorList;
+		return armorSet;
 	}
 	
-	public ArmorList bestDarkDefList(List<Helm> helms, List<Chest> chests, List<Gauntlet> gauntlets, List<Leg> legs) throws EmptyListException {
-		ArmorList armorList = new ArmorList();
+	public ArmorSet bestDarkDefSet(List<Helm> helms, List<Chest> chests, List<Gauntlet> gauntlets, List<Leg> legs) throws EmptyListException {
+		ArmorSet armorSet = new ArmorSet();
 		
 		Helm helmTmp = null;
 		for (Helm helm : helms) {
@@ -331,7 +330,7 @@ public class ArmorService {
 		for (Leg leg : legs) {
 			if (legTmp == null) {
 				legTmp = leg;
-			} else {&
+			} else {
 				if (leg.getDarkDef() > legTmp.getDarkDef()) {
 					legTmp = leg;
 				}
@@ -341,11 +340,11 @@ public class ArmorService {
 			throw new EmptyListException();
 		}
 		
-		armorList.ListHelm(helmTmp);
-		armorList.ListChest(chestTmp);
-		armorList.ListGauntlet(gauntletTmp);
-		armorList.ListLeg(legTmp);
+		armorSet.setHelm(helmTmp);
+		armorSet.setChest(chestTmp);
+		armorSet.setGauntlet(gauntletTmp);
+		armorSet.setLeg(legTmp);
 		
-		return armorList;
+		return armorSet;
 	}
 }

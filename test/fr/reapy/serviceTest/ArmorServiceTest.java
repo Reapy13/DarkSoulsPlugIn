@@ -2,8 +2,8 @@ package fr.reapy.serviceTest;
 
 import static org.junit.Assert.assertSame;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -32,10 +32,10 @@ public class ArmorServiceTest {
 	private Gauntlet gauntlet1, gauntlet2, gauntlet3;
 	private Leg leg1, leg2, leg3;
 
-	private Set<Helm> helms = new HashSet<>();
-	private Set<Chest> chests = new HashSet<>();
-	private Set<Gauntlet> gauntlets = new HashSet<>();
-	private Set<Leg> legs = new HashSet<>();
+	private List<Helm> helms = new ArrayList<>();
+	private List<Chest> chests = new ArrayList<>();
+	private List<Gauntlet> gauntlets = new ArrayList<>();
+	private List<Leg> legs = new ArrayList<>();
 	
 	@Before
 	public void init() {
@@ -162,16 +162,7 @@ public class ArmorServiceTest {
 		assertSame(armorSet.getGauntlet(), armorSetTest.getGauntlet());
 		assertSame(armorSet.getLeg(), armorSetTest.getLeg());
 		
-		helms.clear();
-		
-		try {
-			armorSet = armorService.bestMagicDefSet(helms, chests, gauntlets, legs);
-			assert(false);
-		} catch (EmptyListException e) {
-			assert(true);
-		}
-		
-		chests.clear();
+		legs.clear();
 		
 		try {
 			armorSet = armorService.bestMagicDefSet(helms, chests, gauntlets, legs);
@@ -189,7 +180,16 @@ public class ArmorServiceTest {
 			assert(true);
 		}
 		
-		legs.clear();
+		chests.clear();
+		
+		try {
+			armorSet = armorService.bestMagicDefSet(helms, chests, gauntlets, legs);
+			assert(false);
+		} catch (EmptyListException e) {
+			assert(true);
+		}
+		
+		helms.clear();
 		
 		try {
 			armorSet = armorService.bestMagicDefSet(helms, chests, gauntlets, legs);
@@ -235,16 +235,7 @@ public class ArmorServiceTest {
 		assertSame(armorSet.getGauntlet(), armorSetTest.getGauntlet());
 		assertSame(armorSet.getLeg(), armorSetTest.getLeg());
 		
-		helms.clear();
-		
-		try {
-			armorSet = armorService.bestFireDefSet(helms, chests, gauntlets, legs);
-			assert(false);
-		} catch (EmptyListException e) {
-			assert(true);
-		}
-		
-		chests.clear();
+		legs.clear();
 		
 		try {
 			armorSet = armorService.bestFireDefSet(helms, chests, gauntlets, legs);
@@ -262,7 +253,16 @@ public class ArmorServiceTest {
 			assert(true);
 		}
 		
-		legs.clear();
+		chests.clear();
+		
+		try {
+			armorSet = armorService.bestFireDefSet(helms, chests, gauntlets, legs);
+			assert(false);
+		} catch (EmptyListException e) {
+			assert(true);
+		}
+		
+		helms.clear();
 		
 		try {
 			armorSet = armorService.bestFireDefSet(helms, chests, gauntlets, legs);
@@ -335,7 +335,7 @@ public class ArmorServiceTest {
 			assert(true);
 		}
 		
-		gauntlets.clear();
+		helms.clear();
 		
 		try {
 			armorSet = armorService.bestLightningDefSet(helms, chests, gauntlets, legs);
