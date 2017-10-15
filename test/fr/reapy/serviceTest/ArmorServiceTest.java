@@ -35,6 +35,8 @@ public class ArmorServiceTest {
 	private List<Chest> chests = new ArrayList<>();
 	private List<Gauntlet> gauntlets = new ArrayList<>();
 	private List<Leg> legs = new ArrayList<>();
+	
+	// Methods
 
 	@Before
 	public void init() {
