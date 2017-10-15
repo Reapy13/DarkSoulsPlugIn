@@ -38,6 +38,16 @@ public abstract class Armor implements IEquipment {
 	
 	protected int durability;
 	
+	// Constructors
+	
+	public Armor() {
+		
+	}
+	
+	public Armor(String name) {
+		this.name = name;
+	}
+	
 	// Getters and Setters
 	
 	public String getName() {

@@ -14,7 +14,6 @@ public class ElementNotSupportedException extends Exception {
 	// Constructor
 
 	public ElementNotSupportedException() {
-		ElementNotSupportedException.logger.log(Level.INFO,
-				"Une erreur " + ElementNotSupportedException.class.getName() + " est levée.");
+		logger.log(Level.INFO, "Une erreur " + ElementNotSupportedException.class.getName() + " est levée.");
 	}
 }

@@ -18,7 +18,7 @@ public enum StatBonusEnum {
 		this.level = level;
 	}
 	
-	// Methods
+	// Getters and Setters
 	
 	public char getLevel() {
 		return level;
