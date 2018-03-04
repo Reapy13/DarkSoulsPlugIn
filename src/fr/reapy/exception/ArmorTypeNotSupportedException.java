@@ -9,11 +9,11 @@ public class ArmorTypeNotSupportedException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
-	private static Logger logger = Logger.getLogger(ArmorTypeNotSupportedException.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(ArmorTypeNotSupportedException.class.getName());
 	
 	// Constructors
 	
 	public ArmorTypeNotSupportedException() {
-		logger.log(Level.INFO, "Une erreur " + ArmorTypeNotSupportedException.class.getName() + " est levée.");
+		LOGGER.log(Level.INFO, "Une erreur " + ArmorTypeNotSupportedException.class.getName() + " est levée.");
 	}
 }

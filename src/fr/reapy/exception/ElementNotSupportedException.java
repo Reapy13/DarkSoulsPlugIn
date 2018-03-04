@@ -9,11 +9,11 @@ public class ElementNotSupportedException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 
-	private static Logger logger = Logger.getLogger(ElementNotSupportedException.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(ElementNotSupportedException.class.getName());
 
 	// Constructor
 
 	public ElementNotSupportedException() {
-		logger.log(Level.INFO, "Une erreur " + ElementNotSupportedException.class.getName() + " est levée.");
+		LOGGER.log(Level.INFO, "Une erreur " + ElementNotSupportedException.class.getName() + " est levée.");
 	}
 }

@@ -28,8 +28,7 @@ public class FileService {
 	// Methods
 
 	public List<Armor> extractArmorElementsFromFile(ArmorTypeEnum armorTypeEnum) throws ArmorTypeNotSupportedException {		
-		try {
-			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(armorTypeEnum.getPath()))));
+		try(BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(armorTypeEnum.getPath()))))) {
 			List<Armor> armors = new ArrayList<>();
 			String buffer;
 
@@ -50,7 +49,6 @@ public class FileService {
 					armor = new Leg();
 					break;
 				default:
-					bufferedReader.close();
 					throw new ArmorTypeNotSupportedException();
 				}
 				
@@ -72,8 +70,6 @@ public class FileService {
 			
 				armors.add(armor);
 			}
-			
-			bufferedReader.close();
 			
 			return armors;
 		} catch (FileNotFoundException e) {

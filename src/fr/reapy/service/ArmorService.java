@@ -57,6 +57,7 @@ public class ArmorService {
 					if (armor.getTrustDef() > armorReturned.getTrustDef()) {
 						armorReturned = armor;
 					}
+					break;
 				case MAGIC:
 					if (armor.getMagicDef() > armorReturned.getMagicDef()) {
 						armorReturned = armor;
@@ -92,10 +93,8 @@ public class ArmorService {
 		emptyLists(helms, chests, gauntlets, legs);
 
 		// Creation of the armor set
-		ArmorSet armorSet = new ArmorSet((Helm) bestElementInListByElement(helms, element),
+		return new ArmorSet((Helm) bestElementInListByElement(helms, element),
 				(Chest) bestElementInListByElement(chests, element), (Gauntlet) bestElementInListByElement(gauntlets, element),
 				(Leg) bestElementInListByElement(legs, element));
-
-		return armorSet;
 	}
 }
